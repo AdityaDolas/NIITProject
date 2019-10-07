@@ -76,11 +76,12 @@
 					<td><%=p.getPQuantity()%></td>
 					<td><%=p.getPCategory()%></td>
 					<td><%=p.getPDescript()%></td>
-					<td><a href="ProductServlet?action=edit&email=<%=p.getPid()%>">
-							<button class="btn btn-warning btn-sm" type="submit">Edit</button>
+					<td><a href="ProductServlet?action=edit&pid=<%=p.getPid()%>">
+							<button class="btn btn-warning btn-sm" name="edit" type="submit">Edit</button>
 					</a></td>
-					<td><a href="ProductServlet?action=delete&email=<%=p.getPid()%>">
-							<button class="btn btn-danger btn-sm" type="submit">Delete</button>
+					<td><a
+						href="ProductServlet?action=delete&pid=<%=p.getPid()%>">
+							<button class="btn btn-danger btn-sm" name="delete" type="submit">Delete</button>
 					</a></td>
 				</tr>
 

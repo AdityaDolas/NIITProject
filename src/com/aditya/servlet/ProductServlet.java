@@ -32,8 +32,8 @@ public class ProductServlet extends HttpServlet {
 
 		if (action != null && action.equals("delete")) {
 			String pid = request.getParameter("pid");
+			
 			boolean b = pd.deleteProduct(pid);
-
 			if (b) {
 				response.sendRedirect("ProductServlet");
 			}

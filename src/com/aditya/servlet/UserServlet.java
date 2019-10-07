@@ -26,7 +26,6 @@ public class UserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// Retrieve users from database
 		HttpSession session = request.getSession();
 
 		String action = request.getParameter("action");
