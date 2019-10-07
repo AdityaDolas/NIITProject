@@ -27,7 +27,7 @@ public class AddressServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// Inserting Data into Database
-		String name = request.getParameter("name");
+		String name = (String) request.getParameter("name");
 		String contact = request.getParameter("contact");
 		String username = request.getParameter("username");
 		String city = request.getParameter("city");
