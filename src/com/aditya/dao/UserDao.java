@@ -13,14 +13,14 @@ public class UserDao {
 
 	Connection con = DBConnect.getConnect();
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		User u = new User();
 		u.setName("aa");
 		u.setEmail("ll");
 		u.setContact("22");
 		u.setPassword("1");
 		System.out.println(new UserDao().addUser(u));
-	}
+	}*/
 
 	// ADD User
 	public boolean addUser(User u) {
@@ -137,7 +137,7 @@ public class UserDao {
 	// LOGIN
 	public User getLogin(String uname,String password) {
 		
-		String sql="SELECT Email, Password, Name FROM user WHERE Email=? and Password=?";
+		String sql="SELECT Email, Password, Name, Contact FROM user WHERE Email=? and Password=?";
 		User u=new User();
 		try {
 			PreparedStatement ps=con.prepareStatement(sql);
@@ -146,14 +146,12 @@ public class UserDao {
 			
 			ResultSet rs=ps.executeQuery();
 			while (rs.next()) {
-				
-				//System.out.println(rs.getString(1) + );
 				u.setEmail(rs.getString("Email"));
 				u.setPassword(rs.getString("Password"));
 				u.setName(rs.getString("Name"));
+				u.setContact(rs.getString("Contact"));
 				
 			}
-			System.out.println("dfbdfvdfhj ====> " + u.getEmail());
 			return u;
 		}catch (Exception e) {
 			e.printStackTrace();

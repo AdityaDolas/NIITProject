@@ -51,7 +51,7 @@
 	<jsp:include page="UNavbar.jsp"></jsp:include>
 
 	<div class="con">
-		<form action="CartServlet" method="post">
+		<form action="PlaceOrder.jsp">
 			<table class="table table-dark">
 				<thead>
 					<tr>
@@ -74,9 +74,10 @@
 					<tr>
 						<th scope="row"><%=p.getPid()%></th>
 						<td><%=p.getPname()%></td>
-						<td id = "price"><%=p.getPrice()%></td>
+						<td id="price"><%=p.getPrice()%></td>
 						<td><div class="form-group">
-								<select class="form-control" id="sel1" onchange="updateTotalPrice(this.value)">
+								<select class="form-control" id="sel1"
+									onchange="updateTotalPrice(this.value)">
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -89,13 +90,11 @@
 									<option>10</option>
 								</select>
 							</div></td>
-						<td id = "totalPrice" class = "totalPrice"></td>
+						<td id="totalPrice" class="totalPrice"></td>
 						<td><%=p.getDescription()%></td>
-						<td><a
-							href="CartServlet?action=edit&email=<%=p.getPid()%>">
+						<td><a href="CartServlet?action=edit&email=<%=p.getPid()%>">
 								<button class="btn btn-warning btn-sm" type="submit">Edit</button></td>
-						<td><a
-							href="CartServlet?action=edit&email=<%=p.getPid()%>">
+						<td><a href="CartServlet?action=edit&email=<%=p.getPid()%>">
 								<button class="btn btn-danger btn-sm" type="submit">Delete</button></td>
 					</tr>
 
@@ -109,7 +108,7 @@
 						<th scope="col">Total</th>
 						<th scope="col"></th>
 						<th scope="col"></th>
-						<th scope="col" id = "finalTotal">0</th>
+						<th scope="col" id="finalTotal">0</th>
 						<th scope="col"></th>
 						<th scope="col"></th>
 						<th scope="col"></th>
@@ -118,9 +117,9 @@
 			</table>
 
 			<div class="Cart" align="center">
-				<button class="btn btn-outline-success">
-					<i class="fas fa-shopping-cart">Place Order</i>
-				</button>
+					<button class="btn btn-outline-success">
+						<i class="fas fa-shopping-cart">Place Order</i>
+					</button>
 			</div>
 		</form>
 	</div>
@@ -138,7 +137,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
-		
+
 	<script>
 		function updateTotalPrice(quantity){
 			

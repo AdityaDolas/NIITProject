@@ -44,15 +44,12 @@ public class Login extends HttpServlet {
 		} else {
 
 			User u = ud.getLogin(uname, pass);
-			if (u != null) {
-				
-				System.out.println(" ====> " + u.getEmail() + " " + u.getPassword());
-				
+			if (u != null) {				
 				
 				if (u.getEmail().equals(uname) && u.getPassword().equals(pass)) {
 					session.setAttribute("username", uname);
-					System.out.println("name ===> " + u.getName());
 					session.setAttribute("name", u.getName());
+					session.setAttribute("contact", u.getContact());
 					response.sendRedirect("HomePageDemo.jsp");
 				}
 			 else {
