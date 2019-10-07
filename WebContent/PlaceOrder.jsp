@@ -170,7 +170,6 @@ span.price {
 
 		<div class="panel">
 			<br>
-			<form class="needs-validation" novalidate>
 				<div class="form-row">
 
 					<div class="col-md-4 mb-3">
@@ -267,8 +266,6 @@ span.price {
 					<button class="btn btn-success" type="submit">Save</button>
 				</form>
 
-
-			</form>
 		</div>
 		<br>
 
