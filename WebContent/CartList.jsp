@@ -74,10 +74,10 @@
 					<tr>
 						<th scope="row"><%=p.getPid()%></th>
 						<td><%=p.getPname()%></td>
-						<td id="price"><%=p.getPrice()%></td>
+						<td id="pri<%=p.getPid()%>"><%=p.getPrice()%></td>
 						<td><div class="form-group">
-								<select class="form-control" id="sel1"
-									onchange="updateTotalPrice(this.value)">
+								<select class="form-control" id="<%=p.getPid()%>"
+									onchange="updateTotalPrice(this.value,this.id)">
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -90,12 +90,14 @@
 									<option>10</option>
 								</select>
 							</div></td>
-						<td id="totalPrice" class="totalPrice"></td>
+						<td id="tot<%=p.getPid()%>" class="totalPrice"></td>
 						<td><%=p.getDescription()%></td>
 						<td><a href="CartServlet?action=edit&email=<%=p.getPid()%>">
-								<button class="btn btn-warning btn-sm" type="submit">Edit</button></td>
+								<button class="btn btn-warning btn-sm" type="submit">Edit</button>
+						</a></td>
 						<td><a href="CartServlet?action=edit&email=<%=p.getPid()%>">
-								<button class="btn btn-danger btn-sm" type="submit">Delete</button></td>
+								<button class="btn btn-danger btn-sm" type="submit">Delete</button>
+						</a></td>
 					</tr>
 
 				</tbody>
@@ -117,9 +119,9 @@
 			</table>
 
 			<div class="Cart" align="center">
-					<button class="btn btn-outline-success">
-						<i class="fas fa-shopping-cart">Place Order</i>
-					</button>
+				<button class="btn btn-outline-success">
+					<i class="fas fa-shopping-cart">Place Order</i>
+				</button>
 			</div>
 		</form>
 	</div>
@@ -139,22 +141,33 @@
 		crossorigin="anonymous"></script>
 
 	<script>
-		function updateTotalPrice(quantity){
+		function updateTotalPrice(quantity,id){
 			
 			//console.log("price = " + document.getElementById("price").innerHTML);
 			
-			 let price = parseFloat(document.getElementById("price").innerHTML);
-			 let totalPrice = parseFloat(quantity)*price;
-			 let v = document.getElementById("totalPrice");
+			console.log('q'+quantity);
+			console.log('p'+id);
+			 let getprice = parseFloat(document.getElementById("pri"+id).innerHTML);
+			 let totalPrice = parseFloat(quantity)*getprice;
+			 let TPid = 'tot'+id;
+			 console.log(TPid);
+			 let v = document.getElementById(TPid);
 			 v.innerHTML = totalPrice;
 			
 			 let totalPrices = document.getElementsByClassName('totalPrice');
 			 
 			 let finalTotal = 0;
-			 for(price of totalPrices)
-				 finalTotal += parseInt(price.innerHTML);
+			 for(price of totalPrices){
+				 let p = price.innerHTML;
+				 if(p!=''){
+				 	p=parseInt(p);
+				 console.log(typeof(p));
+				 finalTotal += parseInt(p);
+				 }
+			 }
+				 
 				 //finalTotal += parseLong(price.innerHTML);
-			 console.log("finalTotal = " + finalTotal);
+			console.log("finalTotal = " + finalTotal)
 			document.getElementById("finalTotal").innerHTML = finalTotal;
 			
 		}

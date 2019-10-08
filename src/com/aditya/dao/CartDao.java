@@ -35,7 +35,7 @@ public class CartDao {
 	}
 
 	public List<Cart> getCartList(String email) {
-		String sql = "select Product_Name ,Product_Price, Product_Description from product p inner join cart c on p.pid =c.pid where userName=?";
+		String sql = "select p.pid, Product_Name ,Product_Price, Product_Description from product p inner join cart c on p.pid =c.pid where userName=?";
 		List<Cart> cl = new ArrayList<Cart>();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -43,9 +43,10 @@ public class CartDao {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				Cart c = new Cart();
-				c.setPname(rs.getString(1));
-				c.setPrice(rs.getDouble(2));
-				c.setDescription(rs.getString(3));
+				c.setPid(rs.getInt(1));
+				c.setPname(rs.getString(2));
+				c.setPrice(rs.getDouble(3));
+				c.setDescription(rs.getString(4));
 				cl.add(c);
 			}
 			return cl;
@@ -53,6 +54,24 @@ public class CartDao {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	// DELETE Product From Cart
+	public boolean deleteCartByEmail(String email) {
+		String sql = "delete from cart where email=?";
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, email);
+			int i = ps.executeUpdate();
+			if (i > 0) {
+				return true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 
 }

@@ -378,7 +378,7 @@ span.price {
 						<div class="container">
 							<h4>
 								Cart <span class="price" style="color: black"> <i
-									class="fa fa-shopping-cart"></i> <b>4</b>
+									class="fa fa-shopping-cart"></i> <b></b>
 								</span>
 							</h4>
 							<p>
