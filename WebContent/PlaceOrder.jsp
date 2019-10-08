@@ -1,3 +1,5 @@
+<%@page import="com.aditya.pojo.Cart"%>
+<%@page import="java.util.List"%>
 <%@page import="com.aditya.pojo.User"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -150,6 +152,10 @@ span.price {
 		}
 	%>
 
+	<%
+		List<Cart> li = (List<Cart>) session.getAttribute("CartList");
+	%>
+
 
 	<!--------------------------------------------------JS Check----------------------------------------------------------->
 
@@ -268,7 +274,8 @@ span.price {
 	</form> --%>
 
 	<div class="container">
-		<button style="align-content: center;" class="accordion">Click For Payment</button>
+		<button style="align-content: center;" class="accordion">Click
+			For Payment</button>
 		<div class="panel">
 			<div>
 				<div class="row">
@@ -280,17 +287,16 @@ span.price {
 									<div class="col-50">
 										<h3>Billing Address</h3>
 
-										<label for="fname"><i class="fa fa-user"></i> Full
-											Name</label> <input type="text" id="fname" name="name"
-											placeholder="John M. Doe"> <label for="email"><i
-											class="fa fa-envelope"></i> Email</label> <input type="text"
-											id="email" name="username" placeholder="john@example.com">
+										<label for="fname"><i class="fa fa-user"></i> Name</label> <input
+											type="text" id="fname" name="name" value="${name}"> <label
+											for="email"><i class="fa fa-envelope"></i> Email</label> <input
+											type="text" id="email" name="username" value="${username }">
 
 										<label for="adr"><i class="fa fa-address-card-o"></i>
 											Address</label> <input type="text" id="adr" name="contact"
 											placeholder="542 W. 15th Street"> <label for="city"><i
 											class="fa fa-institution"></i> City</label> <input type="text"
-											id="city" name="city" placeholder="New York">
+											id="city" name="city" placeholder="Mumbai">
 
 										<div class="row">
 											<div class="col-50">
@@ -330,8 +336,8 @@ span.price {
 											</div>
 
 											<div class="col-50">
-												<label for="zip">Zip</label> <input type="text" id="zip"
-													name="pinecode" placeholder="10001">
+												<label for="zip">PineCode</label> <input type="text"
+													id="zip" name="pinecode" placeholder="400700">
 											</div>
 
 										</div>
@@ -381,22 +387,22 @@ span.price {
 									class="fa fa-shopping-cart"></i> <b></b>
 								</span>
 							</h4>
+							<%
+								for (Cart p : li) {
+							%>
 							<p>
-								<a href="#">Product 1</a> <span class="price">$15</span>
+								<a href="#"><%=p.getPname()%></a> <span class="price"
+									id="pri<%=p.getPname()%>"><%=p.getPrice()%></span>
 							</p>
-							<p>
-								<a href="#">Product 2</a> <span class="price">$5</span>
-							</p>
-							<p>
-								<a href="#">Product 3</a> <span class="price">$8</span>
-							</p>
-							<p>
-								<a href="#">Product 4</a> <span class="price">$2</span>
-							</p>
+							<%
+								}
+							%>
 							<hr>
 							<p>
-								Total <span class="price" style="color: black"><b>$30</b></span>
+								Total <span class="price" style="color: black"><b
+									id="finalTotal">ft</b></span>
 							</p>
+
 						</div>
 					</div>
 				</div>
@@ -425,6 +431,42 @@ span.price {
 			});
 		}
 	</script>
+
+	<script>
+		function updateTotalPrice(quantity,id){
+			
+			//console.log("price = " + document.getElementById("price").innerHTML);
+			
+			console.log('q'+quantity);
+			console.log('p'+id);
+			 let getprice = parseFloat(document.getElementById("pri"+id).innerHTML);
+			 let totalPrice = parseFloat(quantity)*getprice;
+			 let TPid = 'tot'+id;
+			 console.log(TPid);
+			 let v = document.getElementById(TPid);
+			 v.innerHTML = totalPrice;
+			
+			 let totalPrices = document.getElementsByClassName('totalPrice');
+			 
+			 let finalTotal = 0;
+			 for(price of totalPrices){
+				 let p = price.innerHTML;
+				 if(p!=''){
+				 	p=parseInt(p);
+				 console.log(typeof(p));
+				 finalTotal += parseInt(p);
+				 }
+			 }
+				 
+				 //finalTotal += parseLong(price.innerHTML);
+			console.log("finalTotal = " + finalTotal)
+			document.getElementById("finalTotal").innerHTML = finalTotal;
+			
+		}
+		
+	</script>
+
+
 
 
 	<!-- Optional JavaScript -->

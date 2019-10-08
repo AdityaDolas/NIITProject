@@ -78,6 +78,7 @@
 						<td><div class="form-group">
 								<select class="form-control" id="<%=p.getPid()%>"
 									onchange="updateTotalPrice(this.value,this.id)">
+									<option selected>0</option>
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -171,6 +172,7 @@
 			document.getElementById("finalTotal").innerHTML = finalTotal;
 			
 		}
+		
 	</script>
 </body>
 </html>
