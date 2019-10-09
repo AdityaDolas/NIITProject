@@ -47,7 +47,7 @@ public class ProductServlet extends HttpServlet {
 			response.sendRedirect("UpdateProduct.jsp");
 
 		} else if (request.getParameter("searchServlet") != null){
-			String pname = request.getParameter("search");
+			String pname = request.getParameter("searchServlet");
 			List<Product> ap = pd.getProductByname(pname);
 			session.setAttribute("plist", ap);
 			response.sendRedirect("Products.jsp");
