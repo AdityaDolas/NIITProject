@@ -172,7 +172,7 @@ public class ProductDao {
 					p.setPCategory(rs.getString(5));
 					p.setPDescript(rs.getString(6));
 					al.add(p);
-				}
+				} System.out.println("Length===>"+al.size());
 				return al;
 			} catch (Exception e) {
 				e.printStackTrace();

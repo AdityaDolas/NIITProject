@@ -71,7 +71,7 @@ public class ProductServlet extends HttpServlet {
 			System.out.println("womenProductjhfhjffuf");
 			String women = request.getParameter("women");
 			System.out.println(women);
-			List<Product> ap = pd.getProductByname(women);
+			List<Product> ap = pd.getProductByCategory(women);
 			session.setAttribute("plist", ap);
 			response.sendRedirect("Products.jsp");
 			
@@ -80,7 +80,7 @@ public class ProductServlet extends HttpServlet {
 			System.out.println("kidProductjhfhjffuf");
 			String kid = request.getParameter("kids");
 			System.out.println(kid);
-			List<Product> ap = pd.getProductByname(kid);
+			List<Product> ap = pd.getProductByCategory(kid);
 			session.setAttribute("plist", ap);
 			response.sendRedirect("Products.jsp");
 			

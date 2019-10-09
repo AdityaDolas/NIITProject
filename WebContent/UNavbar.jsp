@@ -124,7 +124,7 @@
 				</div>
 
 				<div class="women">
-					<form action="ProductServlets" method="get">
+					<form action="ProductServlet" method="get">
 						<li class="nav-item active"><input type="submit" name="women"
 							value="Women" class="nav-link"> <span class="sr-only">(current)</span>
 							</a></input></li>
@@ -132,7 +132,7 @@
 				</div>
 
 				<div class="kids">
-					<form action="ProductServlets" method="get">
+					<form action="ProductServlet" method="get">
 						<li class="nav-item active"><input type="submit" name="kid"
 							value="Kids" class="nav-link"> <span class="sr-only">(current)</span>
 							</a></input></li>
