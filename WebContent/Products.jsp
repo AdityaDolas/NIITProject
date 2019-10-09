@@ -86,7 +86,7 @@
 	<%
 		ProductDao pd = new ProductDao();
 		String pname = request.getParameter("searchProduct");
-		List<Product> pl =(List<Product>) session.getAttribute("ap");
+		List<Product> pl =(List<Product>) session.getAttribute("plist");
 		
 		%><%=pname %>
 		
