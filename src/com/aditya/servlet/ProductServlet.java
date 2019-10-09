@@ -50,7 +50,7 @@ public class ProductServlet extends HttpServlet {
 			session.setAttribute("p", p);
 			response.sendRedirect("UpdateProduct.jsp");
 
-		} if (action!=null && request.getParameter("searchProduct") != null){
+		} if (request.getParameter("searchProduct") != null){
 			System.out.println("searchProductjhfhjffuf");
 			String search = request.getParameter("searchProduct");
 			System.out.println(search);
