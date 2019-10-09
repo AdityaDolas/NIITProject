@@ -131,7 +131,8 @@ public class ProductDao {
 	// Search Product
 	public List<Product> getProductByname(String search) {
 		System.out.println("search===>"+search);
-		String sql = "select * from product where Product_Name like '%"+search+"%'";
+		/*String sql = "select * from product where Product_Name like '%"+search+"%'";*/
+		String sql = "select * from product where Product_Name like '%Adidas%'";
 		List<Product> al = new ArrayList<>();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

@@ -116,7 +116,7 @@
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 				<div class="men">
-					<form action="ProductServlets" method="get">
+					<form action="ProductServlet" method="get">
 						<li class="nav-item active"><input type="submit" name="men"
 							value="Men" class="nav-link"> <span class="sr-only">(current)</span>
 							</a></input></li>

@@ -55,25 +55,25 @@ public class ProductServlet extends HttpServlet {
 			
 			
 		} else if (request.getParameter("men") != null){
-			String search = request.getParameter("men");
-			System.out.println(search);
-			List<Product> ap = pd.getProductByname(search);
+			String men = request.getParameter("men");
+			System.out.println(men);
+			List<Product> ap = pd.getProductByname(men);
 			session.setAttribute("plist", ap);
 			response.sendRedirect("Products.jsp");
 			
 			
 		} else if (request.getParameter("women") != null){
-			String search = request.getParameter("women");
-			System.out.println(search);
-			List<Product> ap = pd.getProductByname(search);
+			String women = request.getParameter("women");
+			System.out.println(women);
+			List<Product> ap = pd.getProductByname(women);
 			session.setAttribute("plist", ap);
 			response.sendRedirect("Products.jsp");
 			
 			
 		} else if (request.getParameter("kid") != null){
-			String search = request.getParameter("kids");
-			System.out.println(search);
-			List<Product> ap = pd.getProductByname(search);
+			String kid = request.getParameter("kids");
+			System.out.println(kid);
+			List<Product> ap = pd.getProductByname(kid);
 			session.setAttribute("plist", ap);
 			response.sendRedirect("Products.jsp");
 			
