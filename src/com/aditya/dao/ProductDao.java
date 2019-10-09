@@ -161,8 +161,8 @@ public class ProductDao {
 			List<Product> al = new ArrayList<>();
 			try {
 				PreparedStatement ps = con.prepareStatement(sql);
-				ResultSet rs = ps.executeQuery();
 				ps.setString(1, men);
+				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
 					Product p = new Product();
 					p.setPid(rs.getInt(1));
