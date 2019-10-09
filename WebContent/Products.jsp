@@ -86,8 +86,9 @@
 	<%
 		ProductDao pd = new ProductDao();
 		String pname = request.getParameter("searchProduct");
-		List<Product> pl = pd.getProductByname(pname);
-		%>
+		List<Product> pl =(List<Product>) session.getAttribute("ap");
+		
+		%><%=pname %>
 		
 		<%=pl.size()+"hiiiiiiiiii" %>
 		
