@@ -388,7 +388,10 @@ span.price {
 								</span>
 							</h4>
 							<%
+							
+								int totalPrice = 0;
 								for (Cart p : li) {
+									totalPrice += p.getPrice();
 							%>
 							<p>
 								<a href="#"><%=p.getPname()%></a> <span class="price"
@@ -400,7 +403,7 @@ span.price {
 							<hr>
 							<p>
 								Total <span class="price" style="color: black"><b
-									id="finalTotal">ft</b></span>
+									id="finalTotal"><%=totalPrice %></b></span>
 							</p>
 
 						</div>

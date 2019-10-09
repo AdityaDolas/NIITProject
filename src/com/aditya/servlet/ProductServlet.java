@@ -46,6 +46,12 @@ public class ProductServlet extends HttpServlet {
 			session.setAttribute("p", p);
 			response.sendRedirect("UpdateProduct.jsp");
 
+		} else if (request.getParameter("searchServlet") != null){
+			String pname = request.getParameter("search");
+			List<Product> ap = pd.getProductByname(pname);
+			session.setAttribute("plist", ap);
+			response.sendRedirect("Products.jsp");
+			
 		} else {
 			List<Product> ap = pd.getProductList();
 			session.setAttribute("plist", ap);

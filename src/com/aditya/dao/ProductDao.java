@@ -125,5 +125,30 @@ public class ProductDao {
 		return false;
 
 	}
+	
+	// Search Product
+	public List<Product> getProductByname(String pname) {
+		String sql = "select * from product where Product_Name like '%?%'";
+		List<Product> al = new ArrayList<>();
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Product p = new Product();
+				p.setPid(rs.getInt(1));
+				p.setPName(rs.getString(2));
+				p.setPPrice(rs.getString(3));
+				p.setPQuantity(rs.getString(4));
+				p.setPCategory(rs.getString(5));
+				p.setPDescript(rs.getString(6));
+				al.add(p);
+
+			}
+			return al;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return al;
+	}
 
 }

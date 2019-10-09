@@ -1,6 +1,8 @@
 <%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%> --%>
 <!doctype html>
+<%@page import="com.aditya.pojo.Product"%>
+<%@page import="java.util.List"%>
 <html lang="en">
 <head>
 <!-- Required meta tags -->
@@ -73,6 +75,10 @@
 		}
 	%>
 
+	<%
+		List<Product> al = (List<Product>) session.getAttribute("plist");
+	%>
+
 
 	<!--------------------------------------------------JS Check----------------------------------------------------------->
 
@@ -108,20 +114,17 @@
 				</a></li>
 			</ul>
 
-			<!-- <div class="container h-100">
-				<div class="d-flex justify-content-center h-100">
-					<div class="searchbar">
-						<input class="search_input" type="text" name=""
-							placeholder="Search..."> <a href="#" class="search_icon"><i
-							class="fas fa-search"></i></a>
-					</div>
-				</div> -->
 
 			<div class="search">
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search"
+				<form action="ProductServlet" method="get"
+					class="form-inline my-2 my-lg-0">
+
+					<input class="form-control mr-sm-2" type="search" name="searchServlet"
 						placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+						
+						<button name="search" class="btn btn-outline-dark my-2 my-sm-0"
+							type="submit">Search</button>
+
 				</form>
 			</div>
 
@@ -131,13 +134,13 @@
 
 			<div class="profile">
 				<div class="btn-group">
-					<button type="button" class="btn btn-outline-success dropdown-toggle"
+					<button type="button"
+						class="btn btn-outline-success dropdown-toggle"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-user">Profile</i>
 					</button>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="#">
-						<span>Hi, ${name}</span></a>
+						<a class="dropdown-item" href="#"> <span>Hi, ${name}</span></a>
 					</div>
 				</div>
 			</div>
@@ -188,6 +191,7 @@
 
 		</div>
 	</nav>
+
 
 	<!--------------------------------------------------Navigation bar----------------------------------------------------------->
 
