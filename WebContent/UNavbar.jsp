@@ -62,6 +62,21 @@
 	position: relative;
 	right: 60px;
 }
+
+.women {
+	position: relative;
+	left: 10px;
+}
+
+.kids {
+	position: relative;
+	left: 20px;
+}
+
+.about {
+	position: relative;
+	left: 30px;
+}
 </style>
 
 </head>
@@ -100,18 +115,38 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active"><a class="nav-link"
-					href="MenShop.jsp">Men <span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item active"><a class="nav-link"
-					href="WomenShop.jsp">Women <span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item active"><a class="nav-link"
-					href="KidShop.jsp">Kids <span class="sr-only">(current)</span>
-				</a></li>
-				<li class="nav-item active"><a class="nav-link"
-					href="About.jsp">About <span class="sr-only">(current)</span>
-				</a></li>
+				<div class="men">
+					<form action="ProductServlets" method="get">
+						<li class="nav-item active"><input type="submit" name="men"
+							value="Men" class="nav-link"> <span class="sr-only">(current)</span>
+							</a></input></li>
+					</form>
+				</div>
+
+				<div class="women">
+					<form action="ProductServlets" method="get">
+						<li class="nav-item active"><input type="submit" name="women"
+							value="Women" class="nav-link"> <span class="sr-only">(current)</span>
+							</a></input></li>
+					</form>
+				</div>
+
+				<div class="kids">
+					<form action="ProductServlets" method="get">
+						<li class="nav-item active"><input type="submit" name="kid"
+							value="Kids" class="nav-link"> <span class="sr-only">(current)</span>
+							</a></input></li>
+					</form>
+				</div>
+
+				<div class="about">
+					<form action="About.jsp">
+						<li class="nav-item active"><input type="submit" name="about"
+							value="About" class="nav-link"> <span class="sr-only">(current)</span>
+							</a></input></li>
+					</form>
+				</div>
+
 			</ul>
 
 
@@ -119,11 +154,11 @@
 				<form action="ProductServlet" method="get"
 					class="form-inline my-2 my-lg-0">
 
-					<input class="form-control mr-sm-2" type="search" name="searchServlet"
-						placeholder="Search" aria-label="Search">
-						
-						<button name="search" class="btn btn-outline-dark my-2 my-sm-0"
-							type="submit">Search</button>
+					<input class="form-control mr-sm-2" type="search"
+						name="searchProduct" placeholder="Search" aria-label="Search">
+
+					<button name="search" class="btn btn-outline-dark my-2 my-sm-0"
+						type="submit">Search</button>
 
 				</form>
 			</div>

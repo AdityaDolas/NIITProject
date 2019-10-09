@@ -5,6 +5,7 @@ public class Product {
 	private String PName;
 	private String PPrice;
 	private String PQuantity;
+	private String Category;
 	private String PCategory;
 	private String PDescript;
 	public int getPid() {
@@ -31,6 +32,12 @@ public class Product {
 	public void setPQuantity(String pQuantity) {
 		PQuantity = pQuantity;
 	}
+	public String getCategory() {
+		return Category;
+	}
+	public void setCategory(String category) {
+		Category = category;
+	}
 	public String getPCategory() {
 		return PCategory;
 	}
@@ -43,6 +50,6 @@ public class Product {
 	public void setPDescript(String pDescript) {
 		PDescript = pDescript;
 	}
-		
+	
 	}
 	

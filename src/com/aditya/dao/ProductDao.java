@@ -16,15 +16,16 @@ public class ProductDao {
 	public boolean addProduct(Product p) {
 
 		// Inserting Data into Database
-		String sql = "insert into product(Product_Name,Product_Price,Product_Quantity,Product_Category,Product_Description) values(?,?,?,?,?)";
+		String sql = "insert into product(Product_Name,Product_Price,Product_Quantity,Category,Product_Category,Product_Description) values(?,?,?,?,?,?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, p.getPName());
 			ps.setString(2, p.getPPrice());
 			ps.setString(3, p.getPQuantity());
-			ps.setString(4, p.getPCategory());
-			ps.setString(5, p.getPDescript());
+			ps.setString(4, p.getCategory());
+			ps.setString(5, p.getPCategory());
+			ps.setString(6, p.getPDescript());
 
 			int i = ps.executeUpdate();
 			if (i > 0) {
@@ -51,8 +52,9 @@ public class ProductDao {
 				p.setPName(rs.getString(2));
 				p.setPPrice(rs.getString(3));
 				p.setPQuantity(rs.getString(4));
-				p.setPCategory(rs.getString(5));
-				p.setPDescript(rs.getString(6));
+				p.setCategory(rs.getString(5));
+				p.setPCategory(rs.getString(6));
+				p.setPDescript(rs.getString(7));
 				al.add(p);
 
 			}
@@ -127,8 +129,9 @@ public class ProductDao {
 	}
 	
 	// Search Product
-	public List<Product> getProductByname(String pname) {
-		String sql = "select * from product where Product_Name like '%"+pname+"%'";
+	public List<Product> getProductByname(String search) {
+		System.out.println("search===>"+search);
+		String sql = "select * from product where Product_Name like '%"+search+"%'";
 		List<Product> al = new ArrayList<>();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);

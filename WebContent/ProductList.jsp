@@ -57,6 +57,7 @@
 					<th scope="col">Product Name</th>
 					<th scope="col">Product Price</th>
 					<th scope="col">Product QTY</th>
+					<th scope="col">Category</th>
 					<th scope="col">Product Category</th>
 					<th scope="col">Product Description</th>
 					<th scope="col">Action</th>
@@ -74,6 +75,7 @@
 					<td><%=p.getPName()%></td>
 					<td><%=p.getPPrice()%></td>
 					<td><%=p.getPQuantity()%></td>
+					<td><%=p.getCategory() %></td>
 					<td><%=p.getPCategory()%></td>
 					<td><%=p.getPDescript()%></td>
 					<td><a href="ProductServlet?action=edit&pid=<%=p.getPid()%>">

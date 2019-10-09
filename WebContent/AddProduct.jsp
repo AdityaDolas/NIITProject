@@ -126,7 +126,7 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 1000px;
-	height: 750px;
+	height: 800px;
 	padding: 12px 50px;
 	box-sizing: border-box;
 	background: black;
@@ -140,7 +140,7 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 320px;
-	height: 420px;
+	height: 500px;
 	padding: 5px 50px;
 	box-sizing: border-box;
 	background: white;
@@ -151,7 +151,6 @@ body {
 label {
 	color: white;
 }
-
 </style>
 
 <!--------------------------------------------------------Login Form css----------------------------------------------------->
@@ -183,6 +182,7 @@ label {
 
 	<!--------------------------------------------------------Login Form--------------------------------------------------------->
 
+<div>
 	<form action="ProductServlet" method="post" class="needs-validation"
 		novalidate>
 
@@ -220,7 +220,18 @@ label {
 						id="inputPassword" required>
 				</div>
 			</div>
-			<br>
+			<br> <br>
+
+			<div class="form-group row">
+				<label for="inputPassword" class="col-sm-2 col-form-label">Category:</label>
+				<div class="col-sm-10">
+					<select class="form-control" name="category">
+						<option>Men</option>
+						<option>Women</option>
+						<option>Kids</option>
+					</select>
+				</div>
+			</div>
 			<br>
 
 			<div class="form-group row">
@@ -241,7 +252,7 @@ label {
 					Description:</label>
 				<div class="col-sm-10">
 					<textarea class="form-control" name="pdescript" rows="5"
-						id="comment"  required></textarea>
+						id="comment" required></textarea>
 				</div>
 			</div>
 			<br></br>
@@ -252,7 +263,8 @@ label {
 			</div>
 		</div>
 	</form>
-
+	</div><br>
+	
 	<script>
 		// Example starter JavaScript for disabling form submissions if there are invalid fields
 		(function() {
@@ -279,18 +291,21 @@ label {
 	</script>
 
 	<script type="text/javascript">
-		$('#pimage').change(function() {
-			var frm = new FormData();
-			frm.append('pimage', input.files[0]);
-			$.ajax({
-				method : 'POST',
-				address : 'E:\Programming\Projects\Online_Shopping\WebContent\ProductIMG',
-				data : frm,
-				contentType : false,
-				processData : false,
-				cache : false
-			});
-		});
+		$('#pimage')
+				.change(
+						function() {
+							var frm = new FormData();
+							frm.append('pimage', input.files[0]);
+							$
+									.ajax({
+										method : 'POST',
+										address : 'E:\Programming\Projects\Online_Shopping\WebContent\ProductIMG',
+										data : frm,
+										contentType : false,
+										processData : false,
+										cache : false
+									});
+						});
 	</script>
 
 	<!--------------------------------------------------------Login Form---------------------------------------------------------->
