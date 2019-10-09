@@ -86,14 +86,11 @@
 	<%
 		ProductDao pd = new ProductDao();
 		String pname = request.getParameter("searchProduct");
-		List<Product> pl =(List<Product>) session.getAttribute("plist");
-		
-		%><%=pname %>
-		
-		<%=pl.size()+"hiiiiiiiiii" %>
-		
-		<%
-		
+		List<Product> pl = (List<Product>) session.getAttribute("plist");
+	%>
+
+
+	<%
 		String cartMsg = (String) request.getAttribute("cartMsg");
 		if (cartMsg != null) {
 	%>

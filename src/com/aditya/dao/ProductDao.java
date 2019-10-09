@@ -157,12 +157,12 @@ public class ProductDao {
 	// Search Product Men, Women, Kids
 		public List<Product> getProductByCategory(String men) {
 			System.out.println("arvind ye dekh 2 bar print ho raha he===>"+men);
-			/*String sql = "select * from product where Product_Name like '%"+search+"%'";*/
 			String sql = "select * from product where Category=?";
 			List<Product> al = new ArrayList<>();
 			try {
 				PreparedStatement ps = con.prepareStatement(sql);
 				ResultSet rs = ps.executeQuery();
+				ps.setString(1, men);
 				while (rs.next()) {
 					Product p = new Product();
 					p.setPid(rs.getInt(1));
