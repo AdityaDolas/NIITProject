@@ -62,7 +62,7 @@ public class ProductServlet extends HttpServlet {
 			System.out.println("menProductjhfhjffuf");
 			String men = request.getParameter("men");
 			System.out.println(men);
-			List<Product> ap = pd.getProductByname(men);
+			List<Product> ap = pd.getProductByCategory(men);
 			session.setAttribute("plist", ap);
 			response.sendRedirect("Products.jsp");
 			

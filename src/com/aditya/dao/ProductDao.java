@@ -153,5 +153,31 @@ public class ProductDao {
 		}
 		return al;
 	}
+	
+	// Search Product Men, Women, Kids
+		public List<Product> getProductByCategory(String men) {
+			System.out.println("arvind ye dekh 2 bar print ho raha he===>"+men);
+			/*String sql = "select * from product where Product_Name like '%"+search+"%'";*/
+			String sql = "select * from product where Category=?";
+			List<Product> al = new ArrayList<>();
+			try {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();
+				while (rs.next()) {
+					Product p = new Product();
+					p.setPid(rs.getInt(1));
+					p.setPName(rs.getString(2));
+					p.setPPrice(rs.getString(3));
+					p.setPQuantity(rs.getString(4));
+					p.setPCategory(rs.getString(5));
+					p.setPDescript(rs.getString(6));
+					al.add(p);
+				}
+				return al;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return al;
+		}
 
 }
