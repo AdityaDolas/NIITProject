@@ -29,6 +29,8 @@ public class ProductServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		String action = request.getParameter("action");
+		
+		System.out.println("action===>"+action);
 
 		if (action != null && action.equals("delete")) {
 			String pid = request.getParameter("pid");

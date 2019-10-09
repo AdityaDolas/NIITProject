@@ -85,9 +85,14 @@
 
 	<%
 		ProductDao pd = new ProductDao();
-		String pname = request.getParameter("searchServlet");
+		String pname = request.getParameter("searchProduct");
 		List<Product> pl = pd.getProductByname(pname);
-
+		%>
+		
+		<%=pl.size()+"hiiiiiiiiii" %>
+		
+		<%
+		
 		String cartMsg = (String) request.getAttribute("cartMsg");
 		if (cartMsg != null) {
 	%>

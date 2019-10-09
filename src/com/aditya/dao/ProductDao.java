@@ -130,9 +130,9 @@ public class ProductDao {
 	
 	// Search Product
 	public List<Product> getProductByname(String search) {
-		System.out.println("search===>"+search);
+		System.out.println("arvind ye dekh 2 bar print ho raha he===>"+search);
 		/*String sql = "select * from product where Product_Name like '%"+search+"%'";*/
-		String sql = "select * from product where Product_Name like '%Adidas%'";
+		String sql = "select * from product where Product_Name like '%"+search+"%'";
 		List<Product> al = new ArrayList<>();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -146,7 +146,6 @@ public class ProductDao {
 				p.setPCategory(rs.getString(5));
 				p.setPDescript(rs.getString(6));
 				al.add(p);
-
 			}
 			return al;
 		} catch (Exception e) {
