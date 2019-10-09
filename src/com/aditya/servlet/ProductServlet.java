@@ -41,7 +41,7 @@ public class ProductServlet extends HttpServlet {
 				response.sendRedirect("ProductServlet");
 			}
 
-		} if (action != null && action.equals("edit")) {
+		} else if (action != null && action.equals("edit")) {
 			System.out.println("editejhfhjffuf");
 			int pid = Integer.parseInt(request.getParameter("pid"));
 			/*System.out.println(action + " Jada Dataa  :  " + request.getParameter("pid"));*/
@@ -50,7 +50,7 @@ public class ProductServlet extends HttpServlet {
 			session.setAttribute("p", p);
 			response.sendRedirect("UpdateProduct.jsp");
 
-		} if (request.getParameter("searchProduct") != null){
+		} else if (request.getParameter("searchProduct") != null){
 			System.out.println("searchProductjhfhjffuf");
 			String search = request.getParameter("searchProduct");
 			System.out.println(search);
@@ -58,7 +58,7 @@ public class ProductServlet extends HttpServlet {
 			session.setAttribute("plist", ap);
 			response.sendRedirect("Products.jsp");
 			
-		} if (request.getParameter("men") != null){
+		} else if (request.getParameter("men") != null){
 			System.out.println("menProductjhfhjffuf");
 			String men = request.getParameter("men");
 			System.out.println(men);
@@ -67,7 +67,7 @@ public class ProductServlet extends HttpServlet {
 			response.sendRedirect("Products.jsp");
 			
 			
-		}if (request.getParameter("women") != null){
+		} else if (request.getParameter("women") != null){
 			System.out.println("womenProductjhfhjffuf");
 			String women = request.getParameter("women");
 			System.out.println(women);
@@ -76,20 +76,20 @@ public class ProductServlet extends HttpServlet {
 			response.sendRedirect("Products.jsp");
 			
 			
-		} if (request.getParameter("kid") != null){
+		} else if (request.getParameter("kid") != null){
 			System.out.println("kidProductjhfhjffuf");
-			String kid = request.getParameter("kids");
+			String kid = request.getParameter("kid");
 			System.out.println(kid);
 			List<Product> ap = pd.getProductByCategory(kid);
 			session.setAttribute("plist", ap);
 			response.sendRedirect("Products.jsp");
 			
 			
-		} /*else {
+		} else {
 			List<Product> ap = pd.getProductList();
 			session.setAttribute("plist", ap);
 			response.sendRedirect("ProductList.jsp");
-		}*/
+		}
 
 	}
 
