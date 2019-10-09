@@ -40,7 +40,7 @@ public class ProductServlet extends HttpServlet {
 				response.sendRedirect("ProductServlet");
 			}
 
-		} else if (action != null && action.equals("edit")) {
+		} if (action != null && action.equals("edit")) {
 			int pid = Integer.parseInt(request.getParameter("pid"));
 			/*System.out.println(action + " Jada Dataa  :  " + request.getParameter("pid"));*/
 			Product p = pd.getProductByid(pid);
@@ -48,15 +48,14 @@ public class ProductServlet extends HttpServlet {
 			session.setAttribute("p", p);
 			response.sendRedirect("UpdateProduct.jsp");
 
-		} else if (request.getParameter("searchProduct") != null){
+		} if (request.getParameter("searchProduct") != null){
 			String search = request.getParameter("searchProduct");
 			System.out.println(search);
 			List<Product> ap = pd.getProductByname(search);
 			session.setAttribute("plist", ap);
 			response.sendRedirect("Products.jsp");
 			
-			
-		} else if (request.getParameter("men") != null){
+		} if (request.getParameter("men") != null){
 			String men = request.getParameter("men");
 			System.out.println(men);
 			List<Product> ap = pd.getProductByname(men);
@@ -64,7 +63,7 @@ public class ProductServlet extends HttpServlet {
 			response.sendRedirect("Products.jsp");
 			
 			
-		} else if (request.getParameter("women") != null){
+		}if (request.getParameter("women") != null){
 			String women = request.getParameter("women");
 			System.out.println(women);
 			List<Product> ap = pd.getProductByname(women);
@@ -72,7 +71,7 @@ public class ProductServlet extends HttpServlet {
 			response.sendRedirect("Products.jsp");
 			
 			
-		} else if (request.getParameter("kid") != null){
+		} if (request.getParameter("kid") != null){
 			String kid = request.getParameter("kids");
 			System.out.println(kid);
 			List<Product> ap = pd.getProductByname(kid);
