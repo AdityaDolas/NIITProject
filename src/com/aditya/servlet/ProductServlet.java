@@ -85,11 +85,11 @@ public class ProductServlet extends HttpServlet {
 			response.sendRedirect("Products.jsp");
 			
 			
-		} else {
+		} /*else {
 			List<Product> ap = pd.getProductList();
 			session.setAttribute("plist", ap);
 			response.sendRedirect("ProductList.jsp");
-		}
+		}*/
 
 	}
 
