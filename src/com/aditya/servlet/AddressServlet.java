@@ -44,7 +44,7 @@ public class AddressServlet extends HttpServlet {
 		boolean b = ad.addAddress(a);
 
 		if (b) {
-			response.sendRedirect("PlaceOrder.jsp");
+			response.sendRedirect("Bill.jsp");
 		} else {
 			response.sendRedirect("HomePageDemo.jsp");
 		}
