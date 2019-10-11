@@ -13,11 +13,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> fd23cd46be997baf3037ea830e24a013742515f0
 <link
 	href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
@@ -25,30 +21,16 @@
 	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<<<<<<< HEAD
-<title>Bill Print</title>
-=======
 <title>Hello, world!</title>
->>>>>>> fd23cd46be997baf3037ea830e24a013742515f0
 </head>
 <body>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-<<<<<<< HEAD
-				<div class="row">
-					<div class="col-xs-6">
-						<h2>Invoice</h2>
-					</div>
-					<div class="col-xs-6 text-right">
-						<h3>Order # 12345</h3>
-					</div>
-=======
 				<div class="invoice-title">
 					<h2>Invoice</h2>
 					<h3 class="pull-right">Order # 12345</h3>
->>>>>>> fd23cd46be997baf3037ea830e24a013742515f0
 				</div>
 				<hr>
 				<div class="row">
@@ -143,20 +125,9 @@
 							</table>
 
 							<div class="Print" align="center">
-<<<<<<< HEAD
-								<button onclick="myFunction()" class="btn btn-success">
-									<i class="fas fa-shopping-cart">Print</i>
-								</button>
-								<script>
-									function myFunction() {
-										window.print();
-									}
-								</script>
-=======
 								<button class="btn btn-outline-success">
 									<i class="fas fa-shopping-cart">Print</i>
 								</button>
->>>>>>> fd23cd46be997baf3037ea830e24a013742515f0
 							</div>
 
 						</div>
