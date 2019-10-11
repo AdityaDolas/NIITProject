@@ -121,6 +121,7 @@
 		String cartMsg = (String) request.getAttribute("cartMsg");
 		if (cartMsg != null) {
 	%>
+	
 	<h2 align="center" style="color: green"><%=cartMsg%></h2>
 
 	<%
@@ -129,9 +130,11 @@
 
 	<div class="container mt-5">
 		<div class="row">
+		
 			<%
 				for (Product p : pl) {
 			%>
+			
 			<div class="col-md-3">
 				<div class="card">
 					<img class="card-img-top" alt=""
