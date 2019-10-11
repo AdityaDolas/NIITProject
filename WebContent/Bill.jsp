@@ -21,16 +21,20 @@
 	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<title>Hello, world!</title>
+<title>Bill</title>
 </head>
 <body>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="invoice-title">
-					<h2>Invoice</h2>
-					<h3 class="pull-right">Order # 12345</h3>
+				<div class="row">
+					<div class="col-xs-6">
+						<h2>Invoice</h2>
+					</div>
+					<div class="col-xs-6 text-right">
+						<h2>Order # 12345</h2>
+					</div>
 				</div>
 				<hr>
 				<div class="row">
@@ -125,9 +129,15 @@
 							</table>
 
 							<div class="Print" align="center">
-								<button class="btn btn-outline-success">
+								<button onclick="myFunction()" class="btn btn-success">
 									<i class="fas fa-shopping-cart">Print</i>
 								</button>
+
+								<script>
+									function myFunction() {
+										window.print();
+									}
+								</script>
 							</div>
 
 						</div>
