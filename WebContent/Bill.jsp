@@ -1,3 +1,6 @@
+<%@page import="com.aditya.pojo.User"%>
+<%@page import="com.aditya.pojo.Cart"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!doctype html>
@@ -25,37 +28,49 @@
 </head>
 <body>
 
+	<jsp:include page="UNavbar.jsp"></jsp:include><br>
+
+	<%
+		List<Cart> li = (List<Cart>) session.getAttribute("CartList");
+	%>
+
+	<%
+		User u = (User) session.getAttribute("u");
+	%>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
+
+
+
 				<div class="row">
 					<div class="col-xs-6">
 						<h2>Invoice</h2>
 					</div>
 					<div class="col-xs-6 text-right">
-						<h2>Order # 12345</h2>
+						<h2>Order # 1</h2>
 					</div>
 				</div>
 				<hr>
 				<div class="row">
 					<div class="col-xs-6">
 						<address>
-							<strong>Billed To:</strong><br> John Smith<br> 1234
-							Main<br> Apt. 4B<br> Springfield, ST 54321
+							<strong>Billed To:</strong><br> <a>${name }</a><br>
+							1234 Main<br> Apt. 4B<br> Springfield, ST 54321
 						</address>
 					</div>
 					<div class="col-xs-6 text-right">
 						<address>
-							<strong>Shipped To:</strong><br> Jane Smith<br> 1234
-							Main<br> Apt. 4B<br> Springfield, ST 54321
+							<strong>Shipped To:</strong><br> <a>${name}</a><br>
+							1234 Main<br> Apt. 4B<br> Springfield, ST 54321
 						</address>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xs-6">
 						<address>
-							<strong>Payment Method:</strong><br> Visa ending **** 4242<br>
-							jsmith@email.com
+							<strong>Contact</strong><br> <a>${username}</a><br>
 						</address>
 					</div>
 					<div class="col-xs-6 text-right">
@@ -87,43 +102,25 @@
 									</tr>
 								</thead>
 								<tbody>
+
+									<%
+										int totalPrice = 0;
+										for (Cart p : li) {
+											totalPrice += p.getPrice();
+									%>
+
 									<!-- foreach ($order->lineItems as $line) or some such thing here -->
 									<tr>
-										<td>BS-200</td>
-										<td class="text-center">$10.99</td>
-										<td class="text-center">1</td>
-										<td class="text-right">$10.99</td>
+										<td><%=p.getPname()%></td>
+										<td class="text-center"><%=p.getPrice()%></td>
+										<td class="text-center"><%=p.getQty()%></td>
+										<td class="text-right"><%=totalPrice%></td>
 									</tr>
-									<tr>
-										<td>BS-400</td>
-										<td class="text-center">$20.00</td>
-										<td class="text-center">3</td>
-										<td class="text-right">$60.00</td>
-									</tr>
-									<tr>
-										<td>BS-1000</td>
-										<td class="text-center">$600.00</td>
-										<td class="text-center">1</td>
-										<td class="text-right">$600.00</td>
-									</tr>
-									<tr>
-										<td class="thick-line"></td>
-										<td class="thick-line"></td>
-										<td class="thick-line text-center"><strong>Subtotal</strong></td>
-										<td class="thick-line text-right">$670.99</td>
-									</tr>
-									<tr>
-										<td class="no-line"></td>
-										<td class="no-line"></td>
-										<td class="no-line text-center"><strong>Shipping</strong></td>
-										<td class="no-line text-right">$15</td>
-									</tr>
-									<tr>
-										<td class="no-line"></td>
-										<td class="no-line"></td>
-										<td class="no-line text-center"><strong>Total</strong></td>
-										<td class="no-line text-right">$685.99</td>
-									</tr>
+
+									<%
+										}
+									%>
+
 								</tbody>
 
 							</table>

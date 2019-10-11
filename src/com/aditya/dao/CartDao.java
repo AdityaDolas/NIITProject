@@ -35,7 +35,7 @@ public class CartDao {
 	}
 
 	public List<Cart> getCartList(String email) {
-		String sql = "select p.pid, Product_Name ,Product_Price, Product_Description from product p inner join cart c on p.pid =c.pid where userName=?";
+		String sql = "select p.pid, Product_Name ,Product_Price, Product_Quantity, Product_Description from product p inner join cart c on p.pid =c.pid where userName=?";
 		List<Cart> cl = new ArrayList<Cart>();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
