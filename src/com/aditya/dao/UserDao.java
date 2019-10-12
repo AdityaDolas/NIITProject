@@ -13,14 +13,11 @@ public class UserDao {
 
 	Connection con = DBConnect.getConnect();
 
-	/*public static void main(String[] args) {
-		User u = new User();
-		u.setName("aa");
-		u.setEmail("ll");
-		u.setContact("22");
-		u.setPassword("1");
-		System.out.println(new UserDao().addUser(u));
-	}*/
+	/*
+	 * public static void main(String[] args) { User u = new User();
+	 * u.setName("aa"); u.setEmail("ll"); u.setContact("22"); u.setPassword("1");
+	 * System.out.println(new UserDao().addUser(u)); }
+	 */
 
 	// ADD User
 	public boolean addUser(User u) {
@@ -133,32 +130,30 @@ public class UserDao {
 		return false;
 
 	}
-	
+
 	// LOGIN
-	public User getLogin(String uname,String password) {
-		
-		String sql="SELECT Email, Password, Name, Contact FROM user WHERE Email=? and Password=?";
-		User u=new User();
+	public User getLogin(String uname, String password) {
+
+		String sql = "SELECT Email, Password, Name, Contact FROM user WHERE Email=? and Password=?";
+		User u = new User();
 		try {
-			PreparedStatement ps=con.prepareStatement(sql);
-			ps.setString(1,uname);
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, uname);
 			ps.setString(2, password);
-			
-			ResultSet rs=ps.executeQuery();
+
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				u.setEmail(rs.getString("Email"));
 				u.setPassword(rs.getString("Password"));
 				u.setName(rs.getString("Name"));
 				u.setContact(rs.getString("Contact"));
-				
+
 			}
 			return u;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
-
 
 }

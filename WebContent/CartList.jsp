@@ -51,7 +51,7 @@
 	<jsp:include page="UNavbar.jsp"></jsp:include>
 
 	<div class="con">
-		<form action="PlaceOrder.jsp">
+		<form action="CartServlet" method="get">
 			<table class="table table-dark">
 				<thead>
 					<tr>
@@ -69,6 +69,8 @@
 
 					<%
 						for (Cart p : li) {
+							
+							Product p_carts = new Product();
 					%>
 
 					<tr>
@@ -76,7 +78,7 @@
 						<td><%=p.getPname()%></td>
 						<td id="pri<%=p.getPid()%>"><%=p.getPrice()%></td>
 						<td><div class="form-group">
-								<select class="form-control" id="<%=p.getPid()%>"
+								<select class="form-control" id="<%=p.getPid()%>" name="qty"
 									onchange="updateTotalPrice(this.value,this.id)">
 									<option selected>0</option>
 									<option>1</option>
@@ -120,10 +122,15 @@
 			</table>
 
 			<div class="Cart" align="center">
-				<button class="btn btn-outline-success">
-					<i class="fas fa-shopping-cart">Place Order</i>
-				</button>
+			
+				<input type = "submit" class="btn btn-outline-success" value = "Place Order"/>
+				
+				
 			</div>
+			
+
+			
+			
 		</form>
 	</div>
 

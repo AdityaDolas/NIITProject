@@ -283,7 +283,8 @@ span.price {
 							</h4>
 							<%
 							
-								int totalPrice = 0;
+								int totalPrice = 0;							
+								
 								for (Cart p : li) {
 									totalPrice += p.getPrice();
 							%>

@@ -36,37 +36,33 @@ public class Login extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		String uname = request.getParameter("uname");
+		// System.out.println(uname);
 		String pass = request.getParameter("pass");
 
 		if (uname != null && uname.equals("admin") && pass.equals("123")) {
+			System.out.println(uname);
 			session.setAttribute("adminName", uname);
 			response.sendRedirect("AdminHP.jsp");
 		} else {
 
 			User u = ud.getLogin(uname, pass);
-			if (u != null) {				
-				
+			// System.out.println(u);
+			if (u.getEmail() != null) {
+				System.out.println(u);
+
 				if (u.getEmail().equals(uname) && u.getPassword().equals(pass)) {
 					session.setAttribute("username", uname);
 					session.setAttribute("name", u.getName());
 					session.setAttribute("contact", u.getContact());
 					response.sendRedirect("HomePageDemo.jsp");
 				}
-			 else {
-				 System.out.println("else ====>");
+			} else {
+				System.out.println("else ====>");
 				request.setAttribute("loginmsg", "Invalid Username or Password");
 				RequestDispatcher rd = request.getRequestDispatcher("LoginPage.jsp");
 				rd.include(request, response);
 
 			}
 		}
-	}
-		/*
-		 * else if (dao.check(uname, pass)) { session.setAttribute("username", uname);
-		 * response.sendRedirect("HomePageDemo.jsp"); } else {
-		 * request.setAttribute("loginmsg", "Invalid Username or Password");
-		 * RequestDispatcher rd = request.getRequestDispatcher("LoginPage.jsp");
-		 * rd.include(request, response); }
-		 */
 	}
 }

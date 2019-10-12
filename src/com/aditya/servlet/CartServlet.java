@@ -1,5 +1,6 @@
 package com.aditya.servlet;
 
+import java.io.Console;
 import java.io.IOException;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.aditya.dao.CartDao;
 import com.aditya.pojo.Cart;
+import com.aditya.pojo.Product;
 
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
@@ -37,6 +39,15 @@ public class CartServlet extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("HomePageDemo.jsp");
 				rd.include(request, response);
 			}
+		} else if (request.getParameter("qty") != null) {
+			String qty = request.getParameter("qty");
+			
+			//String fake = request.getParameter("fake");
+			//System.out.println("" + qty + "|bygrvtmhyjynjbvfrgbmk " + fake);
+			session.setAttribute("qty", qty);
+			//System.out.println("");
+			
+			response.sendRedirect("PlaceOrder.jsp");
 		} else {
 			List<Cart> CartList = cd.getCartList(username);
 			session.setAttribute("CartList", CartList);
@@ -46,31 +57,26 @@ public class CartServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		/*HttpSession session = request.getSession();
-		String username = (String) session.getAttribute(username);
-		
-		double totalBill = 0;
-		String qty[] = request.getParameterValues("qty");
-		String price[] = request.getParameterValues("price");
-		String pname[] = request.getParameterValues("pname");
-		
-		for (int i = 0; i < price.length; i++) {
-			totalBill = totalBill+(Integer.parseInt(qty[i])*Double.parseDouble(price[i]));
-		}
-		
-		session.setAttribute("pname", pname);
-		session.setAttribute("qty", qty);
-		session.setAttribute("price", price);
-		session.setAttribute("totalBill", totalBill);
-		
-		Address b=ad.getAddressByEmail(username);
-		if(b.getEmail()!=null && b.getEmail().equals(username)) {
-		session.setAttribute("a",b);
-		response.sendRedirect("updateAddress.jsp");
-		}else {
-			response.sendRedirect("addAddress.jsp");
-		}
-	}*/
+		/*
+		 * HttpSession session = request.getSession(); String username = (String)
+		 * session.getAttribute(username);
+		 * 
+		 * double totalBill = 0; String qty[] = request.getParameterValues("qty");
+		 * String price[] = request.getParameterValues("price"); String pname[] =
+		 * request.getParameterValues("pname");
+		 * 
+		 * for (int i = 0; i < price.length; i++) { totalBill =
+		 * totalBill+(Integer.parseInt(qty[i])*Double.parseDouble(price[i])); }
+		 * 
+		 * session.setAttribute("pname", pname); session.setAttribute("qty", qty);
+		 * session.setAttribute("price", price); session.setAttribute("totalBill",
+		 * totalBill);
+		 * 
+		 * Address b=ad.getAddressByEmail(username); if(b.getEmail()!=null &&
+		 * b.getEmail().equals(username)) { session.setAttribute("a",b);
+		 * response.sendRedirect("updateAddress.jsp"); }else {
+		 * response.sendRedirect("addAddress.jsp"); } }
+		 */
 
-}
+	}
 }
