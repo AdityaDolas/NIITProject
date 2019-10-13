@@ -51,7 +51,7 @@
 	<jsp:include page="UNavbar.jsp"></jsp:include>
 
 	<div class="con">
-		<form action="OrderServlet" method="post">
+		<form action="CartServlet" method="get">
 
 			<input type="text" name="updatedQuantities" id="updatedQuantities"
 				value="" />
@@ -79,9 +79,7 @@
 					<tr>
 						<th scope="row"><%=p.getPid()%></th>
 						<td><%=p.getPname()%></td>
-						<input type="hidden" name="pname" value="<%=p.getPname()%>">
 						<td id="pri<%=p.getPid()%>"><%=p.getPrice()%></td>
-						<input type="hidden" name="price" value="<%=p.getPrice()%>">
 						<td><div class="form-group">
 								<select class="form-control quantities" id="<%=p.getPid()%>"
 									name="qty" onchange="updateTotalPrice(this.value,this.id)">
