@@ -51,7 +51,10 @@
 	<jsp:include page="UNavbar.jsp"></jsp:include>
 
 	<div class="con">
-		<form action="CartServlet" method="get">
+		<form action="OrderServlet" method="post">
+
+			<input type="text" name="updatedQuantities" id="updatedQuantities"
+				value="" />
 			<table class="table table-dark">
 				<thead>
 					<tr>
@@ -69,17 +72,19 @@
 
 					<%
 						for (Cart p : li) {
-							
+
 							Product p_carts = new Product();
 					%>
 
 					<tr>
 						<th scope="row"><%=p.getPid()%></th>
 						<td><%=p.getPname()%></td>
+						<input type="hidden" name="pname" value="<%=p.getPname()%>">
 						<td id="pri<%=p.getPid()%>"><%=p.getPrice()%></td>
+						<input type="hidden" name="price" value="<%=p.getPrice()%>">
 						<td><div class="form-group">
-								<select class="form-control" id="<%=p.getPid()%>" name="qty"
-									onchange="updateTotalPrice(this.value,this.id)">
+								<select class="form-control quantities" id="<%=p.getPid()%>"
+									name="qty" onchange="updateTotalPrice(this.value,this.id)">
 									<option selected>0</option>
 									<option>1</option>
 									<option>2</option>
@@ -122,15 +127,16 @@
 			</table>
 
 			<div class="Cart" align="center">
-			
-				<input type = "submit" class="btn btn-outline-success" value = "Place Order"/>
-				
-				
-			</div>
-			
 
-			
-			
+				<input type="submit" class="btn btn-outline-success"
+					value="Place Order" />
+
+
+			</div>
+
+
+
+
 		</form>
 	</div>
 
@@ -151,6 +157,15 @@
 	<script>
 		function updateTotalPrice(quantity,id){
 			
+			let quantities = document.getElementsByClassName("quantities");
+			console.log("quantities ===> " + quantities);
+			
+			let commaSeparatedQuantities = "";
+			for(quantity of quantities)
+				commaSeparatedQuantities += quantity.value + ",";
+			console.log("quantity to be sent to servlet ====> " + commaSeparatedQuantities);
+			
+			document.getElementById("updatedQuantities").value = commaSeparatedQuantities;
 			//console.log("price = " + document.getElementById("price").innerHTML);
 			
 			console.log('q'+quantity);
