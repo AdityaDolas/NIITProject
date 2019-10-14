@@ -163,6 +163,10 @@ span.price {
 
 	<%
 		User u = (User) session.getAttribute("u");
+		String order = (String) session.getAttribute("orders");
+		String totalPrice1 = (String) session.getAttribute("totalPrice");
+		String d = (String) session.getAttribute("d");
+		
 	%>
 
 	<!--------------------------------------------------JS Check----------------------------------------------------------->
@@ -290,7 +294,7 @@ span.price {
 							%>
 							<p>
 								<a href="#"><%=p.getPname()%></a> <span class="price"
-									id="pri<%=p.getPname()%>"><%=p.getPrice()%></span>
+									id="tot<%=p.getPid()%>" class="totalPrice"><%=request.getAttribute("d") %></span>
 							</p>
 							<%
 								}
@@ -298,7 +302,7 @@ span.price {
 							<hr>
 							<p>
 								Total <span class="price" style="color: black"><b
-									id="finalTotal"><%=totalPrice %></b></span>
+									id="finalTotal"></b><%=request.getAttribute("totalPrice") %></span>
 							</p>
 
 						</div>
@@ -330,7 +334,7 @@ span.price {
 		}
 	</script>
 
-	<script>
+	<!-- <script>
 		function updateTotalPrice(quantity,id){
 			
 			//console.log("price = " + document.getElementById("price").innerHTML);
@@ -362,7 +366,7 @@ span.price {
 			
 		}
 		
-	</script>
+	</script> -->
 
 
 

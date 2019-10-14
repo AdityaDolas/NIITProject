@@ -50,6 +50,13 @@
 		User u = (User) session.getAttribute("u");
 		String qty = (String) session.getAttribute("qty");
 	%>
+	
+	<%
+		String order = (String) session.getAttribute("orders");
+		String totalPrice1 = (String) session.getAttribute("totalPrice");
+		String d = (String) session.getAttribute("d");
+		
+	%>
 
 	<div class="container">
 		<div class="row">
@@ -125,13 +132,20 @@
 									<tr>
 										<td><%=p.getPname()%></td>
 										<td class="text-center"><%=p.getPrice()%></td>
-										<td class="text-center"><%=qty%></td>
+										<td class="text-center"><%=request.getAttribute("d") %></td>
 										<td class="text-right"><%=totalPrice%></td>
 									</tr>
 
 									<%
 										}
 									%>
+
+									<tr>
+										<td class="no-line"></td>
+										<td class="no-line"></td>
+										<td class="no-line text-center"><strong>Total</strong></td>
+										<td class="no-line text-right"><%=request.getAttribute("totalPrice1") %></td>
+									</tr>
 
 								</tbody>
 

@@ -153,7 +153,9 @@
 		crossorigin="anonymous"></script>
 
 	<script>
-		function updateTotalPrice(quantity,id){
+		function updateTotalPrice(quantity1,id){
+
+			//console.log('quantity1' + quantity1);
 			
 			let quantities = document.getElementsByClassName("quantities");
 			console.log("quantities ===> " + quantities);
@@ -166,10 +168,14 @@
 			document.getElementById("updatedQuantities").value = commaSeparatedQuantities;
 			//console.log("price = " + document.getElementById("price").innerHTML);
 			
-			console.log('q'+quantity);
+			//console.log('q'+quantity[0]);
 			console.log('p'+id);
 			 let getprice = parseFloat(document.getElementById("pri"+id).innerHTML);
-			 let totalPrice = parseFloat(quantity)*getprice;
+			 
+			 console.log("getPrice ====> " + getprice);
+			 let totalPrice = parseFloat(quantity1)*getprice;
+
+			 console.log("totalPrice ====> " + totalPrice);
 			 let TPid = 'tot'+id;
 			 console.log(TPid);
 			 let v = document.getElementById(TPid);

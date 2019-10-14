@@ -46,8 +46,31 @@ public class CartServlet extends HttpServlet {
 			//System.out.println("" + qty + "|bygrvtmhyjynjbvfrgbmk " + fake);
 			session.setAttribute("qty", qty);
 			//System.out.println("");
+			String selectedQuantities = request.getParameter("updatedQuantities");
+			String selectedQuantitiesArray[] = selectedQuantities.split(",");
 			
-			response.sendRedirect("PlaceOrder.jsp");
+			
+			System.out.println("quantities => " + selectedQuantities);
+			CartDao cd = new CartDao();
+			
+			List<Cart> orders =  cd.getCartList(username);
+			int i = 0, totalPrice = 0;
+			double d=0;
+			for(Cart c : orders)
+				{
+					totalPrice +=  c.getPrice()*Integer.parseInt(selectedQuantitiesArray[i]);
+					d = c.getPrice()*Integer.parseInt(selectedQuantitiesArray[i++]);
+					System.out.println("order => " + d);
+				}
+			System.out.println("toalPrice ===> " + totalPrice);
+			
+
+			request.setAttribute("d",d);
+			request.setAttribute("orders",orders);
+			request.setAttribute("totalPrice",totalPrice);
+			
+			request.getRequestDispatcher("PlaceOrder.jsp").forward(request, response); 
+			//response.sendRedirect("PlaceOrder.jsp");
 		} else {
 			List<Cart> CartList = cd.getCartList(username);
 			session.setAttribute("CartList", CartList);
