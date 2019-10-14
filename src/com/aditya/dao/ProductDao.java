@@ -127,12 +127,14 @@ public class ProductDao {
 		return false;
 
 	}
-	
+
 	// Search Product
 	public List<Product> getProductByname(String search) {
-		System.out.println("arvind ye dekh 2 bar print ho raha he===>"+search);
-		/*String sql = "select * from product where Product_Name like '%"+search+"%'";*/
-		String sql = "select * from product where Product_Name like '%"+search+"%'";
+		System.out.println("arvind ye dekh 2 bar print ho raha he===>" + search);
+		/*
+		 * String sql = "select * from product where Product_Name like '%"+search+"%'";
+		 */
+		String sql = "select * from product where Product_Name like '%" + search + "%'";
 		List<Product> al = new ArrayList<>();
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -153,31 +155,32 @@ public class ProductDao {
 		}
 		return al;
 	}
-	
+
 	// Search Product Men, Women, Kids
-		public List<Product> getProductByCategory(String men) {
-			System.out.println("arvind ye dekh 2 bar print ho raha he===>"+men);
-			String sql = "select * from product where Category=?";
-			List<Product> al = new ArrayList<>();
-			try {
-				PreparedStatement ps = con.prepareStatement(sql);
-				ps.setString(1, men);
-				ResultSet rs = ps.executeQuery();
-				while (rs.next()) {
-					Product p = new Product();
-					p.setPid(rs.getInt(1));
-					p.setPName(rs.getString(2));
-					p.setPPrice(rs.getString(3));
-					p.setPQuantity(rs.getString(4));
-					p.setPCategory(rs.getString(5));
-					p.setPDescript(rs.getString(6));
-					al.add(p);
-				} System.out.println("Length===>"+al.size());
-				return al;
-			} catch (Exception e) {
-				e.printStackTrace();
+	public List<Product> getProductByCategory(String men) {
+		System.out.println("arvind ye dekh 2 bar print ho raha he===>" + men);
+		String sql = "select * from product where Category=?";
+		List<Product> al = new ArrayList<>();
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, men);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				Product p = new Product();
+				p.setPid(rs.getInt(1));
+				p.setPName(rs.getString(2));
+				p.setPPrice(rs.getString(3));
+				p.setPQuantity(rs.getString(4));
+				p.setPCategory(rs.getString(5));
+				p.setPDescript(rs.getString(6));
+				al.add(p);
 			}
+			System.out.println("Length===>" + al.size());
 			return al;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return al;
+	}
 
 }
