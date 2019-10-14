@@ -144,7 +144,7 @@
 										<td class="no-line"></td>
 										<td class="no-line"></td>
 										<td class="no-line text-center"><strong>Total</strong></td>
-										<td class="no-line text-right"><%=request.getAttribute("totalPrice1") %></td>
+										<td class="no-line text-right"><%=request.getAttribute("totalPrice") %></td>
 									</tr>
 
 								</tbody>

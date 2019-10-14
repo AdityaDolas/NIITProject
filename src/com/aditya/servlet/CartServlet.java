@@ -41,36 +41,33 @@ public class CartServlet extends HttpServlet {
 			}
 		} else if (request.getParameter("qty") != null) {
 			String qty = request.getParameter("qty");
-			
-			//String fake = request.getParameter("fake");
-			//System.out.println("" + qty + "|bygrvtmhyjynjbvfrgbmk " + fake);
+
+			// String fake = request.getParameter("fake");
+			// System.out.println("" + qty + "|bygrvtmhyjynjbvfrgbmk " + fake);
 			session.setAttribute("qty", qty);
-			//System.out.println("");
+			// System.out.println("");
 			String selectedQuantities = request.getParameter("updatedQuantities");
 			String selectedQuantitiesArray[] = selectedQuantities.split(",");
-			
-			
+
 			System.out.println("quantities => " + selectedQuantities);
 			CartDao cd = new CartDao();
-			
-			List<Cart> orders =  cd.getCartList(username);
-			int i = 0, totalPrice = 0;
-			double d=0;
-			for(Cart c : orders)
-				{
-					totalPrice +=  c.getPrice()*Integer.parseInt(selectedQuantitiesArray[i]);
-					d = c.getPrice()*Integer.parseInt(selectedQuantitiesArray[i++]);
-					System.out.println("order => " + d);
-				}
-			System.out.println("toalPrice ===> " + totalPrice);
-			
 
-			request.setAttribute("d",d);
-			request.setAttribute("orders",orders);
-			request.setAttribute("totalPrice",totalPrice);
-			
-			request.getRequestDispatcher("PlaceOrder.jsp").forward(request, response); 
-			//response.sendRedirect("PlaceOrder.jsp");
+			List<Cart> orders = cd.getCartList(username);
+			int i = 0, totalPrice = 0;
+			double d = 0;
+			for (Cart c : orders) {
+				totalPrice += c.getPrice() * Integer.parseInt(selectedQuantitiesArray[i]);
+				d = c.getPrice() * Integer.parseInt(selectedQuantitiesArray[i++]);
+				System.out.println("order => " + d);
+			}
+			System.out.println("toalPrice ===> " + totalPrice);
+
+			request.setAttribute("d", d);
+			request.setAttribute("orders", orders);
+			request.setAttribute("totalPrice", totalPrice);
+
+			request.getRequestDispatcher("PlaceOrder.jsp").forward(request, response);
+			// response.sendRedirect("PlaceOrder.jsp");
 		} else {
 			List<Cart> CartList = cd.getCartList(username);
 			session.setAttribute("CartList", CartList);

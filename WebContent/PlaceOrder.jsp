@@ -1,3 +1,4 @@
+<%@page import="com.aditya.dao.CartDao"%>
 <%@page import="com.aditya.pojo.Cart"%>
 <%@page import="java.util.List"%>
 <%@page import="com.aditya.pojo.User"%>
@@ -154,6 +155,7 @@ span.price {
 
 	<%
 		List<Cart> li = (List<Cart>) session.getAttribute("CartList");
+		List<Cart> ci = (List<Cart>) session.getAttribute("orders");
 	%>
 
 
@@ -166,7 +168,6 @@ span.price {
 		String order = (String) session.getAttribute("orders");
 		String totalPrice1 = (String) session.getAttribute("totalPrice");
 		String d = (String) session.getAttribute("d");
-		
 	%>
 
 	<!--------------------------------------------------JS Check----------------------------------------------------------->
@@ -286,23 +287,24 @@ span.price {
 								</span>
 							</h4>
 							<%
-							
-								int totalPrice = 0;							
-								
+								int totalPrice = 0;
+
 								for (Cart p : li) {
 									totalPrice += p.getPrice();
 							%>
+
 							<p>
 								<a href="#"><%=p.getPname()%></a> <span class="price"
-									id="tot<%=p.getPid()%>" class="totalPrice"><%=request.getAttribute("d") %></span>
+									id="tot<%=p.getPid()%>" class="totalPrice"><%=request.getAttribute("d")%></span>
 							</p>
+
 							<%
 								}
 							%>
 							<hr>
 							<p>
 								Total <span class="price" style="color: black"><b
-									id="finalTotal"></b><%=request.getAttribute("totalPrice") %></span>
+									id="finalTotal"></b><%=request.getAttribute("totalPrice")%></span>
 							</p>
 
 						</div>
@@ -334,7 +336,7 @@ span.price {
 		}
 	</script>
 
-	<!-- <script>
+	<script>
 		function updateTotalPrice(quantity,id){
 			
 			//console.log("price = " + document.getElementById("price").innerHTML);
@@ -366,7 +368,7 @@ span.price {
 			
 		}
 		
-	</script> -->
+	</script>
 
 
 
