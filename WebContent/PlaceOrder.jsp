@@ -293,12 +293,11 @@ span.price {
 									System.out.println(p);
 									totalPrice += p.getPrice();
 									System.out.println(totalPrice);
-									
-									
 							%>
 
 							<p>
-								<a href="#"><%=p.getPname()%></a> <span><a><%=p.getPrice()%></a></span>
+								<a href="#"><%=p.getPname()%></a> <span class="price"
+									id="tot<%=p.getPid()%>" class="totalPrice"><a><%=p.getPrice()%></a></span>
 							</p>
 
 							<%
