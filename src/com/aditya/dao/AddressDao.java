@@ -12,7 +12,7 @@ public class AddressDao {
 
 	public boolean addAddress(Address a) {
 		// Inserting Data into Database
-		String sql = "insert into address (Name, Contact, Username, City, State, Pinecode) values(?,?,?,?,?,?)";
+		String sql = "insert into address (Name, Address, Username, City, State, Pinecode) values(?,?,?,?,?,?)";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, a.getName());
