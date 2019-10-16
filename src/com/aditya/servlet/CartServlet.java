@@ -1,6 +1,5 @@
 package com.aditya.servlet;
 
-import java.io.Console;
 import java.io.IOException;
 import java.util.List;
 
@@ -13,13 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.aditya.dao.CartDao;
+import com.aditya.dao.ProductDao;
 import com.aditya.pojo.Cart;
-import com.aditya.pojo.Product;
 
 @WebServlet("/CartServlet")
 public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	CartDao cd = new CartDao();
+	ProductDao pd = new ProductDao();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -39,6 +39,17 @@ public class CartServlet extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("HomePageDemo.jsp");
 				rd.include(request, response);
 			}
+		} else if (action != null && action.equals("edit")) {
+
+		} else if (action != null && action.equals("delete")) {
+			System.out.println("delete");
+			String pid = request.getParameter("pid");
+
+			boolean b = pd.deleteProduct(pid);
+			if (b) {
+				response.sendRedirect("CartServlet");
+			}
+
 		} else if (request.getParameter("qty") != null) {
 			String qty = request.getParameter("qty");
 
