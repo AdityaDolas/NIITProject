@@ -83,7 +83,7 @@
 						<td><div class="form-group">
 								<select class="form-control quantities" id="<%=p.getPid()%>"
 									name="qty" onchange="updateTotalPrice(this.value,this.id)">
-									<option selected>0</option>
+									<option selected>-Select Qty-</option>
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>

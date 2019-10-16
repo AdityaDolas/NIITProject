@@ -154,7 +154,6 @@ span.price {
 	%>
 
 	<%
-		List<Cart> li = (List<Cart>) session.getAttribute("CartList");
 		List<Cart> ci = (List<Cart>) session.getAttribute("orders");
 	%>
 
@@ -287,15 +286,14 @@ span.price {
 								</span>
 							</h4>
 							<%
-								int totalPrice = 0;
-
-								for (Cart p : li) {
-									totalPrice += p.getPrice();
+								
+									for (Cart c : ci) {
+									
 							%>
 
 							<p>
-								<a href="#"><%=p.getPname()%></a> <span class="price"
-									id="tot<%=p.getPid()%>" class="totalPrice"><%=request.getAttribute("d")%></span>
+								<a href="#"><%=c.getPname()%></a> <span class="price"
+									<%-- id="tot<%=c.getPid()%>" --%> class="totalPrice"><%=request.getAttribute("d")%></span>
 							</p>
 
 							<%
@@ -304,7 +302,7 @@ span.price {
 							<hr>
 							<p>
 								Total <span class="price" style="color: black"><b
-									id="finalTotal"></b><%=request.getAttribute("totalPrice")%></span>
+									id="finalTotal"></b><%-- <%=request.getAttribute("totalPrice")%> --%></span>
 							</p>
 
 						</div>
@@ -354,7 +352,7 @@ span.price {
 			 
 			 let finalTotal = 0;
 			 for(price of totalPrices){
-				 let p = price.innerHTML;
+				 /* let p = price.innerHTML; */
 				 if(p!=''){
 				 	p=parseInt(p);
 				 console.log(typeof(p));

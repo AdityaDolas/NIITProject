@@ -70,6 +70,7 @@ public class CartServlet extends HttpServlet {
 				totalPrice += c.getPrice() * Integer.parseInt(selectedQuantitiesArray[i]);
 				d = c.getPrice() * Integer.parseInt(selectedQuantitiesArray[i++]);
 				System.out.println("order => " + d);
+				System.out.println("prices:"+c.getPrice());
 			}
 			System.out.println("toalPrice ===> " + totalPrice);
 
