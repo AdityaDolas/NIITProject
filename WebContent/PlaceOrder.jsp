@@ -183,13 +183,12 @@ span.price {
 					<div class="col-75">
 						<div class="container">
 							<form action="AddressServlet" method="post">
-
 								<div class="row">
 									<div class="col-50">
 										<h3>Billing Address</h3>
 
 										<label for="fname"><i class="fa fa-user"></i> Name</label> <input
-											type="text" id="fname" name="name" value="${name}"> <label
+											type="text" id="fname" name="qty" value="${name}"> <label
 											for="email"><i class="fa fa-envelope"></i> Email</label> <input
 											type="text" id="email" name="username" value="${username }">
 
@@ -277,6 +276,8 @@ span.price {
 								<label> <input type="checkbox" checked="checked"
 									name="sameadr"> Shipping address same as billing
 								</label> <input type="submit" value="Continue to checkout" class="btn">
+
+								
 							</form>
 						</div>
 					</div>
@@ -304,6 +305,7 @@ span.price {
 							</p>
 
 							<%
+							
 								}
 							%>
 							<hr>
