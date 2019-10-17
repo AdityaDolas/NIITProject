@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.aditya.pojo.User"%>
 <%@page import="com.aditya.pojo.Cart"%>
 <%@page import="java.util.List"%>
@@ -44,18 +45,19 @@
 
 	<%
 		List<Cart> li = (List<Cart>) session.getAttribute("CartList");
+		List<Cart> cl = (List<Cart>) request.getAttribute("orders");
+		ArrayList<Double> subTotal = (ArrayList<Double>) request.getAttribute("s");
 	%>
 
 	<%
 		User u = (User) session.getAttribute("u");
 		String qty = (String) session.getAttribute("qty");
 	%>
-	
+
 	<%
 		String order = (String) session.getAttribute("orders");
 		String totalPrice1 = (String) session.getAttribute("totalPrice");
 		String d = (String) session.getAttribute("d");
-		
 	%>
 
 	<div class="container">
@@ -124,15 +126,18 @@
 
 									<%
 										int totalPrice = 0;
-										for (Cart p : li) {
+										int i = 0;
+										for (Cart p : cl) {
+											System.out.println(p);
 											totalPrice += p.getPrice();
+											System.out.println(totalPrice);
 									%>
 
 									<!-- foreach ($order->lineItems as $line) or some such thing here -->
 									<tr>
 										<td><%=p.getPname()%></td>
 										<td class="text-center"><%=p.getPrice()%></td>
-										<td class="text-center"><%=request.getAttribute("d") %></td>
+										<td class="text-center"><%=subTotal.get(i++)%></td>
 										<td class="text-right"><%=totalPrice%></td>
 									</tr>
 
@@ -144,7 +149,7 @@
 										<td class="no-line"></td>
 										<td class="no-line"></td>
 										<td class="no-line text-center"><strong>Total</strong></td>
-										<td class="no-line text-right"><%=request.getAttribute("totalPrice") %></td>
+										<td class="no-line text-right"><%=request.getAttribute("totalPrice")%></td>
 									</tr>
 
 								</tbody>

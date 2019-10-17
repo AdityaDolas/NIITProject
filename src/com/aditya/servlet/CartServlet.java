@@ -1,6 +1,7 @@
 package com.aditya.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -66,16 +67,21 @@ public class CartServlet extends HttpServlet {
 			List<Cart> orders = cd.getCartList(username);
 			int i = 0, totalPrice = 0;
 			double d = 0;
+			ArrayList<Double> SubTotal = new ArrayList<>();
+			
 			for (Cart c : orders) {
 				totalPrice += c.getPrice() * Integer.parseInt(selectedQuantitiesArray[i]);
 				d = c.getPrice() * Integer.parseInt(selectedQuantitiesArray[i++]);
 				System.out.println("order => " + d);
+				SubTotal.add(d);
+				
 				System.out.println("prices:"+c.getPrice());
 			}
 			System.out.println("toalPrice ===> " + totalPrice);
 
 			request.setAttribute("d", d);
 			request.setAttribute("orders", orders);
+			request.setAttribute("s", SubTotal);
 			request.setAttribute("totalPrice", totalPrice);
 
 			request.getRequestDispatcher("PlaceOrder.jsp").forward(request, response);

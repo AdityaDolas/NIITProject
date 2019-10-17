@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.aditya.dao.CartDao"%>
 <%@page import="com.aditya.pojo.Cart"%>
 <%@page import="java.util.List"%>
@@ -155,7 +156,8 @@ span.price {
 
 	<%
 		List<Cart> li = (List<Cart>) session.getAttribute("CartList");
-		List<Cart> cl = (List<Cart>) session.getAttribute("orders");
+		List<Cart> cl = (List<Cart>) request.getAttribute("orders");
+		ArrayList<Double> subTotal = (ArrayList<Double>) request.getAttribute("s");
 	%>
 
 
@@ -288,6 +290,7 @@ span.price {
 							</h4>
 							<%
 								int totalPrice = 0;
+								int i = 0;
 
 								for (Cart p : cl) {
 									System.out.println(p);
@@ -297,7 +300,7 @@ span.price {
 
 							<p>
 								<a href="#"><%=p.getPname()%></a> <span class="price"
-									id="tot<%=p.getPid()%>" class="totalPrice"><a><%=p.getPrice()%></a></span>
+									id="tot<%=p.getPid()%>" class="totalPrice"><a><%=subTotal.get(i++)%></a></span>
 							</p>
 
 							<%
