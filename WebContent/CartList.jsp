@@ -117,6 +117,8 @@
 						<th scope="col"></th>
 						<th scope="col"></th>
 						<th scope="col" id="finalTotal">0</th>
+						
+						
 						<th scope="col"></th>
 						<th scope="col"></th>
 						<th scope="col"></th>
@@ -131,9 +133,6 @@
 
 
 			</div>
-
-
-
 
 		</form>
 	</div>

@@ -52,7 +52,7 @@ public class CartServlet extends HttpServlet {
 			}
 
 		} else if (request.getParameter("qty") != null) {
-			String qty = request.getParameter("qty");
+			String qty []= request.getParameterValues("qty");
 
 			// String fake = request.getParameter("fake");
 			// System.out.println("" + qty + "|bygrvtmhyjynjbvfrgbmk " + fake);
