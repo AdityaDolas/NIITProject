@@ -48,14 +48,14 @@
 
 	<%
 		User u = (User) session.getAttribute("u");
-		String qty []= (String[]) session.getAttribute("qty");
+		String qty[] = (String[]) session.getAttribute("qty");
 	%>
-	
+
 	<%
 		String order = (String) session.getAttribute("orders");
 		String totalPrice1 = (String) session.getAttribute("totalPrice");
 		String d = (String) session.getAttribute("d");
-		int count=0;
+		int count = 0;
 	%>
 
 	<div class="container">
@@ -123,7 +123,7 @@
 								<tbody>
 
 									<%
-										int totalPrice = 0;
+										int totalPrice = 0, finalTotal = 0;
 										for (Cart p : li) {
 											totalPrice += p.getPrice();
 									%>
@@ -132,12 +132,13 @@
 									<tr>
 										<td><%=p.getPname()%></td>
 										<td class="text-center"><%=p.getPrice()%></td>
-									<td class="text-center"><%=qty[count] %></td>
-							<%		count++; %>
-										<td class="text-right"><%=totalPrice%></td>
+										<td class="text-center"><%=qty[count]%></td>
+
+										<td class="text-right"><%=(int) p.getPrice() * Integer.parseInt(qty[count])%></td>
 									</tr>
 
 									<%
+										finalTotal += (int) p.getPrice() * Integer.parseInt(qty[count++]);
 										}
 									%>
 
@@ -145,7 +146,7 @@
 										<td class="no-line"></td>
 										<td class="no-line"></td>
 										<td class="no-line text-center"><strong>Total</strong></td>
-										<td class="no-line text-right"><%=request.getAttribute("totalPrice") %></td>
+										<td class="no-line text-right"><%=finalTotal%></td>
 									</tr>
 
 								</tbody>
