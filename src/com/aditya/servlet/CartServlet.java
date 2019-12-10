@@ -27,10 +27,14 @@ public class CartServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
+
 		String action = request.getParameter("action");
 		if (action != null && action.equals("addToCart")) {
+
 			int pid = Integer.parseInt(request.getParameter("pid"));
+
 			boolean b = cd.addToCart(pid, username);
+
 			if (b) {
 				request.setAttribute("cartMsg", "Cart Added Successfully");
 				RequestDispatcher rd = request.getRequestDispatcher("HomePageDemo.jsp");
@@ -48,7 +52,7 @@ public class CartServlet extends HttpServlet {
 			}
 
 		} else if (request.getParameter("qty") != null) {
-			String qty = request.getParameter("qty");
+			String qty[] = request.getParameterValues("qty");
 
 			// String fake = request.getParameter("fake");
 			// System.out.println("" + qty + "|bygrvtmhyjynjbvfrgbmk " + fake);
@@ -56,20 +60,30 @@ public class CartServlet extends HttpServlet {
 			// System.out.println("");
 			String selectedQuantities = request.getParameter("updatedQuantities");
 			String selectedQuantitiesArray[] = selectedQuantities.split(",");
+
 			System.out.println("quantities => " + selectedQuantities);
 			CartDao cd = new CartDao();
+
 			List<Cart> orders = cd.getCartList(username);
 			int i = 0, totalPrice = 0;
 			double d = 0;
+			ArrayList<Double> SubTotal = new ArrayList<>();
+
 			for (Cart c : orders) {
 				totalPrice += c.getPrice() * Integer.parseInt(selectedQuantitiesArray[i]);
 				d = c.getPrice() * Integer.parseInt(selectedQuantitiesArray[i++]);
 				System.out.println("order => " + d);
+				SubTotal.add(d);
+
+				System.out.println("prices:" + c.getPrice());
 			}
 			System.out.println("toalPrice ===> " + totalPrice);
+
 			request.setAttribute("d", d);
 			request.setAttribute("orders", orders);
+			request.setAttribute("s", SubTotal);
 			request.setAttribute("totalPrice", totalPrice);
+
 			request.getRequestDispatcher("PlaceOrder.jsp").forward(request, response);
 			// response.sendRedirect("PlaceOrder.jsp");
 		} else {
