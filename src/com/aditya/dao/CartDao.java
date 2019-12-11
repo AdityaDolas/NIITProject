@@ -58,7 +58,7 @@ public class CartDao {
 
 	// DELETE Product From Cart
 	public boolean deleteCartByEmail(String email) {
-		String sql = "delete from cart where username=?";
+		String sql = "delete from cart where pid=?";
 		try {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setString(1, email);

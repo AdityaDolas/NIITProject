@@ -98,11 +98,9 @@
 							</div></td>
 						<td id="tot<%=p.getPid()%>" class="totalPrice"></td>
 						<td><%=p.getDescription()%></td>
-						<td><a href="CartServlet?action=edit&pid=<%=p.getPid()%>">
-								<button class="btn btn-warning btn-sm" type="submit">Edit</button>
-						</a></td>
-						<td><a href="CartServlet?action=edit&pid=<%=p.getPid()%>">
-								<button class="btn btn-danger btn-sm" type="submit">Delete</button>
+						
+						<td><a href="CartServlet?action=delete&pid=<%=p.getPid()%>">
+									<span class="btn btn-warning btn-sm">Delete</span>
 						</a></td>
 					</tr>
 
@@ -117,8 +115,8 @@
 						<th scope="col"></th>
 						<th scope="col"></th>
 						<th scope="col" id="finalTotal">0</th>
-						
-						
+
+
 						<th scope="col"></th>
 						<th scope="col"></th>
 						<th scope="col"></th>

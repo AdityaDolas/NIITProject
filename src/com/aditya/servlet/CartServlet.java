@@ -29,6 +29,8 @@ public class CartServlet extends HttpServlet {
 		String username = (String) session.getAttribute("username");
 
 		String action = request.getParameter("action");
+		System.out.println("action==>"+action);
+		System.out.println("pid===>"+request.getParameter("pid"));
 		if (action != null && action.equals("addToCart")) {
 
 			int pid = Integer.parseInt(request.getParameter("pid"));
@@ -46,7 +48,7 @@ public class CartServlet extends HttpServlet {
 			System.out.println("delete");
 			String pid = request.getParameter("pid");
 
-			boolean b = pd.deleteProduct(pid);
+			boolean b = cd.deleteCartByEmail(pid);
 			if (b) {
 				response.sendRedirect("CartServlet");
 			}
